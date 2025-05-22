@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>FAQ</title>
+    <link rel="stylesheet" href="STYLE.css">
+</head>
+<body>
+    <div class="faq-container">
+        <h1>Frequently Asked Questions</h1>
+        
+        <div class="faq-box">
+            <button class="faq-question" aria-expanded="false">
+                <span class="faq-sign">+</span>
+                <span>Forgotten your Apple Account</span>
+            </button>
+            <div class="faq-answer">
+                <p>
+                    Here’s how to reset your Apple Account password and regain access to your account.<br><br>
+                    The easiest way to reset your password is with your iPhone or other trusted Apple device – one that’s already signed in to your Apple Account, so that Apple knows that it’s yours. You also need a passcode (or password on Mac) set up on that device.<br><br>
+                    Resetting your password on the web when you don’t have a trusted device is another way to regain access to your account.
+                </p>
+            </div>
+        </div>
+        
+        <div class="faq-box">
+            <button class="faq-question" aria-expanded="false">
+                <span class="faq-sign">+</span>
+                <span>Apple Repair</span>
+            </button>
+            <div class="faq-answer">
+                <p>
+                    Send your product to Apple.
+                    Online or over the phone, we’ll arrange shipment for your product to an Apple Repair Centre – all on your schedule and without an appointment. This service is available for most Apple products.
+                </p>
+            </div>
+        </div>
+        
+        <div class="faq-box">
+            <button class="faq-question" aria-expanded="false">
+                <span class="faq-sign">+</span>
+                <span>Billing and Subscriptions</span>
+            </button>
+            <div class="faq-answer">
+                <p>
+                    You can cancel a subscription from Apple, or a subscription you purchased in an app, directly in the App Store on your device.
+                </p>
+            </div>
+        </div>
+    </div>
+    <script>
+        document.querySelectorAll('.faq-question').forEach(button => {
+            button.addEventListener('click', () => {
+                const box = button.parentElement;
+                const answer = box.querySelector('.faq-answer');
+                const sign = button.querySelector('.faq-sign');
+                const expanded = button.getAttribute('aria-expanded') === 'true';
+
+                document.querySelectorAll('.faq-box').forEach(otherBox => {
+                    if (otherBox !== box) {
+                        otherBox.classList.remove('open');
+                        otherBox.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
+                        otherBox.querySelector('.faq-sign').textContent = '+';
+                    }
+                });
+
+                if (!expanded) {
+                    box.classList.add('open');
+                    button.setAttribute('aria-expanded', 'true');
+                    sign.textContent = '-';
+                } else {
+                    box.classList.remove('open');
+                    button.setAttribute('aria-expanded', 'false');
+                    sign.textContent = '+';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
